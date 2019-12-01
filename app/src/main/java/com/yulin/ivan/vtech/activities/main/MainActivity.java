@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -83,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     " remaining out of " +
                     totalTasks +
                     " tasks";
+
             remainingTextView.setText(sb);
         }
     }
@@ -92,18 +92,4 @@ public class MainActivity extends AppCompatActivity implements MainView {
         return (TasksListAdapter) tasksRecyclerView.getAdapter();
     }
 
-    @Override
-    public void toggleTaskDone(TextView textView, boolean isDone) {
-        TasksListAdapter tasksListAdapter = (TasksListAdapter) tasksRecyclerView.getAdapter();
-        if (tasksListAdapter != null) {
-            if (isDone) {
-                textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                tasksListAdapter.incDone();
-            } else {
-                textView.setPaintFlags(textView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-                tasksListAdapter.decDone();
-            }
-            updateRemainingTasks();
-        }
-    }
 }

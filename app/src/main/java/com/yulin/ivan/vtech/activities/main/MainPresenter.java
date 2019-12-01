@@ -19,8 +19,6 @@ interface MainView {
 
     TasksListAdapter getListAdapter();
 
-    void toggleTaskDone(TextView textView, boolean isDone);
-
     void updateRemainingTasks();
 }
 
